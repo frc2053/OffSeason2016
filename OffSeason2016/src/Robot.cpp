@@ -31,6 +31,8 @@ void Robot::RobotInit() {
 
 	Robot::drivebaseSubsystem->ZeroYaw();
 
+	std::cout <<  "ZEROED YAW!" << std::endl;
+
 	chooserObstacle = new SendableChooser();
 	chooserGoal = new SendableChooser();
 
@@ -38,9 +40,11 @@ void Robot::RobotInit() {
 	chooserObstacle->AddObject("Moat", new MoatAuto());
 	chooserObstacle->AddObject("Ramparts", new RampartsAuto());
 	chooserObstacle->AddObject("Rough Terrain", new RoughTerrainAuto());
-	chooserObstacle->AddObject("Do Nothing", new DoNothingAuto(5));
+	chooserObstacle->AddObject("Do Nothing", new DoNothingAuto(15));
 
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
+
+	std::cout << "ADDED VALUES TO SMARTDASHBOARD!" << std::endl;
 }
 
 void Robot::DisabledInit(){

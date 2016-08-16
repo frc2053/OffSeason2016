@@ -48,16 +48,16 @@ OI::OI() {
 	startButtonOperator->WhenReleased(new ClimberMotor(0, 0));
 
 	leftTriggerOperator->WhileActive(new ShooterWheels(-1500, 0, 0, 200));
-	leftTriggerOperator->WhenInactive(new ShooterWheels(0, 0, 70, 110));
+	//leftTriggerOperator->WhenInactive(new ShooterWheels(0, 0, 70, 110));
 
 	leftTriggerOperator->WhileActive(new IntakeRoller(-1, 0));
-	leftTriggerOperator->WhenInactive(new IntakeRoller(0, 0));
+	//leftTriggerOperator->WhenInactive(new IntakeRoller(0, 0));
 
 	rightTriggerOperator->WhileActive(new ShooterWheels(6000, 0, 70, 110));
-	rightTriggerOperator->WhenInactive(new ShooterWheels(0, 0, 70, 110));
+	//rightTriggerOperator->WhenInactive(new ShooterWheels(0, 0, 70, 110));
 
 	rightTriggerOperator->WhileActive(new IntakeRoller(1, 0));
-	rightTriggerOperator->WhileActive(new IntakeRoller(0, 0));
+	//rightTriggerOperator->WhenInactive(new IntakeRoller(0, 0));
 
 	//smartdashboard buttons to run commands
 	SmartDashboard::PutData("Zero Yaw", new ZeroYaw());

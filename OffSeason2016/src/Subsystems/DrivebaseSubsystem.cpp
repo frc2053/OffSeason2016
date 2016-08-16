@@ -9,6 +9,7 @@ DrivebaseSubsystem::DrivebaseSubsystem() : Subsystem("DrivebaseSubsystem")
 	frontRightTalon = RobotMap::driveBaseSubsystemFrontRightTalon;
 	backLeftTalon = RobotMap::driveBaseSubsystemBackLeftTalon;
 	backRightTalon = RobotMap::driveBaseSubsystemBackRightTalon;
+	robotDrive = RobotMap::driveBaseSubsystemRobotDrive;
 	robotImu = RobotMap::robotImu;
 	tigerDrive = RobotMap::tigerDrive;
 

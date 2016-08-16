@@ -3,6 +3,7 @@
 IntakeRoller::IntakeRoller(float speed, float time)
 {
 	Requires(Robot::intakeSubsystem.get());
+	timer.reset(new Timer());
 	isDone = false;
 	timeTarget = time;
 	timeCurrent = 0;
