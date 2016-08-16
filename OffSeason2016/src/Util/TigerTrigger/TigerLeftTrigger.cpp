@@ -1,4 +1,4 @@
-#include <Util/TigerTrigger/TigerLeftTrigger.h>
+#include "TigerLeftTrigger.h"
 
 TigerLeftTrigger::TigerLeftTrigger(Joystick* joy, int axis) {
 	joystick = joy;

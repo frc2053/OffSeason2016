@@ -16,15 +16,18 @@ std::shared_ptr<DefenseSubsystem> Robot::defenseSubsystem;
 std::shared_ptr<LedSubsystem> Robot::ledSubsystem;
 
 void Robot::RobotInit() {
+	std::cout << "ROBOT INIT!" << std::endl;
 	RobotMap::init();
 
-	oi.reset(new OI());
 	drivebaseSubsystem.reset(new DrivebaseSubsystem());
 	shooterSubsystem.reset(new ShooterSubsystem());
 	intakeSubsystem.reset(new IntakeSubsystem());
 	climberSubsystem.reset(new ClimberSubsystem());
 	defenseSubsystem.reset(new DefenseSubsystem());
 	ledSubsystem.reset(new LedSubsystem());
+	oi.reset(new OI());
+
+	std::cout << "DONE INITING SUBSYSTEMS!" << std::endl;
 
 	Robot::drivebaseSubsystem->ZeroYaw();
 
