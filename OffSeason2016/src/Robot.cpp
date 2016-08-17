@@ -16,7 +16,6 @@ std::shared_ptr<DefenseSubsystem> Robot::defenseSubsystem;
 std::shared_ptr<LedSubsystem> Robot::ledSubsystem;
 
 void Robot::RobotInit() {
-	std::cout << "ROBOT INIT!" << std::endl;
 	RobotMap::init();
 
 	drivebaseSubsystem.reset(new DrivebaseSubsystem());
@@ -27,11 +26,7 @@ void Robot::RobotInit() {
 	ledSubsystem.reset(new LedSubsystem());
 	oi.reset(new OI());
 
-	std::cout << "DONE INITING SUBSYSTEMS!" << std::endl;
-
 	Robot::drivebaseSubsystem->ZeroYaw();
-
-	std::cout <<  "ZEROED YAW!" << std::endl;
 
 	chooserObstacle = new SendableChooser();
 	chooserGoal = new SendableChooser();
@@ -43,8 +38,6 @@ void Robot::RobotInit() {
 	chooserObstacle->AddObject("Do Nothing", new DoNothingAuto(15));
 
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
-
-	std::cout << "ADDED VALUES TO SMARTDASHBOARD!" << std::endl;
 }
 
 void Robot::DisabledInit(){

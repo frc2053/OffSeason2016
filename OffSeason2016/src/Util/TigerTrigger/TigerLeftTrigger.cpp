@@ -8,7 +8,7 @@ TigerLeftTrigger::TigerLeftTrigger(Joystick* joy, int axis) {
 
 bool TigerLeftTrigger::Get() {
 	joystickValue = TigerLeftTrigger::Deadband(joystick->GetRawAxis(joystickAxis));
-	if(joystickValue < 0) {
+	if(joystickValue > 0) {
 		return true;
 	}
 	else {

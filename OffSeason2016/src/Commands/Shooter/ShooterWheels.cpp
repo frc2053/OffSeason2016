@@ -24,8 +24,8 @@ void ShooterWheels::Initialize()
 	isDone = false;
 	velocityLeftWheel = 0;
 	velocityRightWheel = 0;
-	servoAngleLeft = 70;
-	servoAngleRight = 110;
+	//servoAngleLeft = 70;
+	//servoAngleRight = 110;
 }
 
 void ShooterWheels::Execute()
@@ -65,8 +65,9 @@ bool ShooterWheels::IsFinished()
 
 void ShooterWheels::End()
 {
-	Robot::shooterSubsystem->RunBothMotors(0);
 	timer->Stop();
+	Robot::shooterSubsystem->SetAngleLeftServo(servoAngleLeft);
+	Robot::shooterSubsystem->SetAngleRightServo(servoAngleRight);
 }
 
 void ShooterWheels::Interrupted()
