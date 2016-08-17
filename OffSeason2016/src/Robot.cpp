@@ -7,6 +7,8 @@
 #include "Commands/Autonomous/RockwallAuto.h"
 #include "Commands/Autonomous/RoughTerrainAuto.h"
 
+#include "Commands/Leds/SetLeds.h"
+
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<DrivebaseSubsystem> Robot::drivebaseSubsystem;
 std::shared_ptr<ShooterSubsystem> Robot::shooterSubsystem;
@@ -14,6 +16,7 @@ std::shared_ptr<IntakeSubsystem> Robot::intakeSubsystem;
 std::shared_ptr<ClimberSubsystem> Robot::climberSubsystem;
 std::shared_ptr<DefenseSubsystem> Robot::defenseSubsystem;
 std::shared_ptr<LedSubsystem> Robot::ledSubsystem;
+std::shared_ptr<NetworkTable> Robot::netTable;
 
 void Robot::RobotInit() {
 	RobotMap::init();
@@ -24,6 +27,7 @@ void Robot::RobotInit() {
 	climberSubsystem.reset(new ClimberSubsystem());
 	defenseSubsystem.reset(new DefenseSubsystem());
 	ledSubsystem.reset(new LedSubsystem());
+	netTable = NetworkTable::GetTable("vision");
 	oi.reset(new OI());
 
 	Robot::drivebaseSubsystem->ZeroYaw();
@@ -64,6 +68,7 @@ void Robot::AutonomousPeriodic() {
 }
 
 void Robot::TeleopInit() {
+	Scheduler::GetInstance()->AddCommand(new SetLeds(1, 0, 1));
 	if (selectedObstacle != nullptr) {
 		selectedObstacle->Cancel();
 	}
