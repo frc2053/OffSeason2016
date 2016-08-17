@@ -5,6 +5,7 @@
 //command includes
 #include "Commands/Shooter/ShooterSolenoid.h"
 #include "Commands/Shooter/ShooterWheels.h"
+#include "Commands/Shooter/LowGoalGroup.h"
 
 #include "Commands/Intake/IntakeRoller.h"
 
@@ -15,9 +16,14 @@
 
 #include "Commands/Drive/ZeroYaw.h"
 
+#include "Commands/Drive/AlignCenter.h"
+#include "Commands/Drive/GoalAlign.h"
+
 OI::OI() {
 	driverJoystick.reset(new Joystick(0));
 	operatorJoystick.reset(new Joystick(1));
+
+	leftBumperDriver.reset(new JoystickButton(driverJoystick.get(), 5));
 
 	aButtonOperator.reset(new JoystickButton(operatorJoystick.get(), 1));
 	bButtonOperator.reset(new JoystickButton(operatorJoystick.get(), 2));
@@ -29,6 +35,8 @@ OI::OI() {
 
 	leftTriggerOperator.reset(new TigerLeftTrigger(operatorJoystick.get(), 2));
 	rightTriggerOperator.reset(new TigerRightTrigger(operatorJoystick.get(), 3));
+
+	leftBumperDriver->WhenPressed(new GoalAlign(0));
 
 	aButtonOperator->WhenPressed(new ShooterSolenoid());
 
@@ -58,6 +66,9 @@ OI::OI() {
 
 	rightTriggerOperator->WhileActive(new IntakeRoller(-1, 0));
 	rightTriggerOperator->WhenInactive(new IntakeRoller(0, 0));
+
+
+	leftBumperOperator->WhenPressed(new LowGoalGroup());
 
 	//smartdashboard buttons to run commands
 	SmartDashboard::PutData("Zero Yaw", new ZeroYaw());

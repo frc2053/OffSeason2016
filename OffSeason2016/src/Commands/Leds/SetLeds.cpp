@@ -11,9 +11,7 @@ SetLeds::SetLeds(float red, float green, float blue)
 
 void SetLeds::Initialize()
 {
-	redChannel = 1;
-	greenChannel = 0;
-	blueChannel = 1;
+
 }
 
 void SetLeds::Execute()

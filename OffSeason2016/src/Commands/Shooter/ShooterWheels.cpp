@@ -24,8 +24,6 @@ void ShooterWheels::Initialize()
 	isDone = false;
 	velocityLeftWheel = 0;
 	velocityRightWheel = 0;
-	//servoAngleLeft = 70;
-	//servoAngleRight = 110;
 }
 
 void ShooterWheels::Execute()

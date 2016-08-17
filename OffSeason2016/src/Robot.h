@@ -22,6 +22,7 @@ public:
 	static std::shared_ptr<ClimberSubsystem> climberSubsystem;
 	static std::shared_ptr<DefenseSubsystem> defenseSubsystem;
 	static std::shared_ptr<LedSubsystem> ledSubsystem;
+	static std::shared_ptr<NetworkTable> netTable;
 
 	virtual void RobotInit();
 	virtual void DisabledInit();

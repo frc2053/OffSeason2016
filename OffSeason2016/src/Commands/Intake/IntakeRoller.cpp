@@ -46,7 +46,6 @@ bool IntakeRoller::IsFinished()
 
 void IntakeRoller::End()
 {
-	//Robot::intakeSubsystem->RunMotor(0);
 	timer->Stop();
 }
 
