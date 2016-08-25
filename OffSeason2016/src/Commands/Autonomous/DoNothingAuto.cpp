@@ -1,3 +1,4 @@
+//DOES NOTHING
 #include "DoNothingAuto.h"
 
 DoNothingAuto::DoNothingAuto(float timeToWait)
