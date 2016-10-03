@@ -17,7 +17,7 @@
 #include "Commands/Drive/ZeroYaw.h"
 
 #include "Commands/Drive/AlignCenter.h"
-#include "Commands/Drive/GoalAlign.h"
+#include "Commands/Drive/AlignParallel.h"
 
 OI::OI() {
 	driverJoystick.reset(new Joystick(0));
@@ -36,7 +36,7 @@ OI::OI() {
 	leftTriggerOperator.reset(new TigerLeftTrigger(operatorJoystick.get(), 2));
 	rightTriggerOperator.reset(new TigerRightTrigger(operatorJoystick.get(), 3));
 
-	leftBumperDriver->WhenPressed(new GoalAlign(0));
+	leftBumperDriver->WhenPressed(new GoalAlignParallel(0));
 
 	aButtonOperator->WhenPressed(new ShooterSolenoid());
 
