@@ -6,6 +6,10 @@
 #include "Commands/Autonomous/RampartsAuto.h"
 #include "Commands/Autonomous/RockwallAuto.h"
 #include "Commands/Autonomous/RoughTerrainAuto.h"
+#include "Commands/Autonomous/CenterGoalAuto.h"
+#include "Commands/Autonomous/RightGoalAuto.h"
+#include "Commands/Autonomous/LeftGoalAuto.h"
+#include "Commands/Autonomous/TestAuto.h"
 
 #include "Commands/Leds/SetLeds.h"
 
@@ -41,7 +45,14 @@ void Robot::RobotInit() {
 	chooserObstacle->AddObject("Rough Terrain", new RoughTerrainAuto());
 	chooserObstacle->AddObject("Do Nothing", new DoNothingAuto(15));
 
+	chooserGoal->AddDefault("Test Auto", new TestAuto());
+	chooserGoal->AddObject("Center Goal Auto", new CenterGoalAuto());
+	chooserGoal->AddObject("Right Goal Auto", new RightGoalAuto());
+	chooserGoal->AddObject("Left Goal Auto", new LeftGoalAuto());
+	chooserGoal->AddObject("Do Nothing", new DoNothingAuto());
+
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
+	SmartDashboard::PutData("Goal Chooser", chooserGoal);
 }
 
 void Robot::DisabledInit(){
@@ -79,7 +90,7 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
-	SmartDashboard::PutNumber("Amperage on Frontleft", RobotMap::pdp->GetCurrent(3));
+	std::cout << "Distance: " << Robot::table->GetNumber("distance", 0.0) << std::endl;
 }
 
 void Robot::TestPeriodic() {

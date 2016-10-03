@@ -43,6 +43,7 @@ void AlignParallel::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void AlignParallel::Execute()
 {
+	Scheduler::GetInstance()->AddCommand(new SetLeds(1, 0, 0));
 	speedX = 0;
 	speedY = 0;
 	XAxis = Robot::oi->GetLeftXAxisDriver();
@@ -145,6 +146,7 @@ void AlignParallel::Execute()
 
 	if(inToleranceX && inToleranceY) {
 		Robot::drivebaseSubsystem->MecanumDrive(0, 0, 0, 0);
+		Scheduler::GetInstance()->AddCommand(new SetLeds(0, 0, 1));
 		//printf("Target aligned in X dir!\n");
 		Robot::drivebaseSubsystem->isAlignedX = true;
 		Robot::drivebaseSubsystem->isAlignedY = true;
