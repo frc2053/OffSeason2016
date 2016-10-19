@@ -49,7 +49,7 @@ void Robot::RobotInit() {
 	chooserGoal->AddObject("Center Goal Auto", new CenterGoalAuto());
 	chooserGoal->AddObject("Right Goal Auto", new RightGoalAuto());
 	chooserGoal->AddObject("Left Goal Auto", new LeftGoalAuto());
-	chooserGoal->AddObject("Do Nothing", new DoNothingAuto());
+	chooserGoal->AddObject("Do Nothing", new DoNothingAuto(15));
 
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
 	SmartDashboard::PutData("Goal Chooser", chooserGoal);
@@ -90,7 +90,7 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
-	std::cout << "Distance: " << Robot::table->GetNumber("distance", 0.0) << std::endl;
+	std::cout << "Distance: " << Robot::netTable->GetNumber("distance", 0.0) << std::endl;
 }
 
 void Robot::TestPeriodic() {

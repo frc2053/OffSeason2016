@@ -2,7 +2,7 @@
 #define TestAuto_H
 
 #include "Commands/CommandGroup.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 class TestAuto: public CommandGroup
 {

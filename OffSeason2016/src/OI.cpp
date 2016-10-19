@@ -36,7 +36,7 @@ OI::OI() {
 	leftTriggerOperator.reset(new TigerLeftTrigger(operatorJoystick.get(), 2));
 	rightTriggerOperator.reset(new TigerRightTrigger(operatorJoystick.get(), 3));
 
-	leftBumperDriver->WhenPressed(new GoalAlignParallel(0));
+	leftBumperDriver->WhenPressed(new AlignParallel(0, 110));
 
 	aButtonOperator->WhenPressed(new ShooterSolenoid());
 

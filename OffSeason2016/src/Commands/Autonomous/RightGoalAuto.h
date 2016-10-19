@@ -2,7 +2,7 @@
 #define RightGoalAuto_H
 
 #include "Commands/CommandGroup.h"
-#include "../Robot.h"
+#include "../../Robot.h"
 
 class RightGoalAuto: public CommandGroup
 {

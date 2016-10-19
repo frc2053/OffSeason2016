@@ -1,4 +1,5 @@
 #include "AlignParallel.h"
+#include "../Leds/SetLeds.h"
 
 AlignParallel::AlignParallel(float angle, float distanceAway)
 {
