@@ -1,6 +1,6 @@
-#include "ClimberSolenoid.h"
+#include "ClimberLatchSolenoid.h"
 
-ClimberSolenoid::ClimberSolenoid(bool solenoidDirection)
+ClimberLatchSolenoid::ClimberLatchSolenoid(bool solenoidDirection)
 {
 	Requires(Robot::climberSubsystem.get());
 	isDone = false;
@@ -12,7 +12,7 @@ ClimberSolenoid::ClimberSolenoid(bool solenoidDirection)
 	timer->Start();
 }
 
-void ClimberSolenoid::Initialize()
+void ClimberLatchSolenoid::Initialize()
 {
 	isDone = false;
 	timer->Reset();
@@ -21,7 +21,7 @@ void ClimberSolenoid::Initialize()
 	timeCurrent = 0;
 }
 
-void ClimberSolenoid::Execute()
+void ClimberLatchSolenoid::Execute()
 {
 	isDone = false;
 	timeCurrent = timer->Get();
@@ -34,24 +34,24 @@ void ClimberSolenoid::Execute()
 	}
 
 	if(direction == true) {
-		Robot::climberSubsystem->SetClimbSolenoidForward();
+		Robot::climberSubsystem->SetLatchSolenoidForward();
 	}
 	if(direction == false) {
-		Robot::climberSubsystem->SetClimbSolenoidReverse();
+		Robot::climberSubsystem->SetLatchSolenoidReverse();
 	}
 }
 
-bool ClimberSolenoid::IsFinished()
+bool ClimberLatchSolenoid::IsFinished()
 {
 	return isDone;
 }
 
-void ClimberSolenoid::End()
+void ClimberLatchSolenoid::End()
 {
 	timer->Stop();
 }
 
-void ClimberSolenoid::Interrupted()
+void ClimberLatchSolenoid::Interrupted()
 {
 
 }

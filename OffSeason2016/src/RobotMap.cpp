@@ -13,11 +13,11 @@ std::shared_ptr<Servo> RobotMap::shooterSubsystemShooterServoLeft;
 std::shared_ptr<Servo> RobotMap::shooterSubsystemShooterServoRight;
 
 std::shared_ptr<CANTalon> RobotMap::intakeSubsystemIntakeTalon;
-std::shared_ptr<DoubleSolenoid> RobotMap::intakeSubsystemIntakeSolenoid;
 
 std::shared_ptr<CANTalon> RobotMap::climberSubsystemClimbTalonLeft;
 std::shared_ptr<CANTalon> RobotMap::climberSubsystemClimbTalonRight;
 std::shared_ptr<DoubleSolenoid> RobotMap::climberSubsystemClimbSolenoid;
+std::shared_ptr<DoubleSolenoid> RobotMap::climberSubsystemLatchSolenoid;
 
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemGreenLED;
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemRedLED;
@@ -68,8 +68,6 @@ void RobotMap::init() {
     intakeSubsystemIntakeTalon.reset(new CANTalon(1));
     intakeSubsystemIntakeTalon->SetInverted(true);
 
-    intakeSubsystemIntakeSolenoid.reset(new DoubleSolenoid(4,5));
-
     climberSubsystemClimbTalonRight.reset(new CANTalon(7));
     climberSubsystemClimbTalonRight->SetInverted(true);
 
@@ -79,6 +77,8 @@ void RobotMap::init() {
     climberSubsystemClimbTalonLeft->Set(7);
 
     climberSubsystemClimbSolenoid.reset(new DoubleSolenoid(2,3));
+
+    climberSubsystemLatchSolenoid.reset(new DoubleSolenoid(4,5));
 
     ledSubsystemGreenLED.reset(new DigitalOutput(1));
     ledSubsystemRedLED.reset(new DigitalOutput(2));

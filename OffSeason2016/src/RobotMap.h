@@ -21,11 +21,11 @@ public:
 	static std::shared_ptr<Servo> shooterSubsystemShooterServoRight;
 
 	static std::shared_ptr<CANTalon> intakeSubsystemIntakeTalon;
-	static std::shared_ptr<DoubleSolenoid> intakeSubsystemIntakeSolenoid;
 
 	static std::shared_ptr<CANTalon> climberSubsystemClimbTalonLeft;
 	static std::shared_ptr<CANTalon> climberSubsystemClimbTalonRight;
 	static std::shared_ptr<DoubleSolenoid> climberSubsystemClimbSolenoid;
+	static std::shared_ptr<DoubleSolenoid> climberSubsystemLatchSolenoid;
 
 	static std::shared_ptr<DigitalOutput> ledSubsystemGreenLED;
 	static std::shared_ptr<DigitalOutput> ledSubsystemRedLED;

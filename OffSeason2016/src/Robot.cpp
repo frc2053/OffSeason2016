@@ -64,6 +64,9 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
+	//opens latch at start of match
+	Robot::climberSubsystem->SetLatchSolenoidReverse();
+
 	started = false;
 	selectedObstacle = (Command*) chooserObstacle->GetSelected();
 	selectedGoal = (Command*) chooserGoal->GetSelected();
@@ -91,6 +94,12 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 	std::cout << "Distance: " << Robot::netTable->GetNumber("distance", 0.0) << std::endl;
+
+	//check if climber is at top if true, close latch and set leds
+	if(Robot::climberSubsystem->GetForwardLimitSwitch()) {
+		Robot::climberSubsystem->SetLatchSolenoidForward();
+		Scheduler::GetInstance()->AddCommand(new SetLeds(0, 1, 0));
+	}
 }
 
 void Robot::TestPeriodic() {

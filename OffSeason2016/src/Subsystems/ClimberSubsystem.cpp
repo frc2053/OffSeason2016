@@ -4,7 +4,7 @@
 ClimberSubsystem::ClimberSubsystem() : Subsystem("ClimberSubsystem")
 {
 	climbTalonRight = RobotMap::climberSubsystemClimbTalonRight;
-	//climbTalonLeft = RobotMap::climberSubsystemClimbTalonLeft;
+	climbTalonLeft = RobotMap::climberSubsystemClimbTalonLeft;
 	climbSolenoid = RobotMap::climberSubsystemClimbSolenoid;
 }
 
@@ -15,24 +15,32 @@ void ClimberSubsystem::InitDefaultCommand()
 
 void ClimberSubsystem::RunBothMotors(float speed) {
 	climbTalonRight->Set(speed);
-	//climbTalonLeft->Set(speed);
+	climbTalonLeft->Set(speed);
 }
 
 void ClimberSubsystem::RunRightMotor(float speed) {
 	climbTalonRight->Set(speed);
 }
 
-/*void ClimberSubsystem::ClimbMotorLeft(float speed)
+void ClimberSubsystem::RunLeftMotor(float speed)
 {
 	climbTalonLeft->Set(speed);
-}*/
+}
 
-void ClimberSubsystem::SetSolenoidForward() {
+void ClimberSubsystem::SetClimbSolenoidForward() {
 	climbSolenoid->Set(DoubleSolenoid::kForward);
 }
 
-void ClimberSubsystem::SetSolenoidReverse() {
+void ClimberSubsystem::SetClimbSolenoidReverse() {
 	climbSolenoid->Set(DoubleSolenoid::kReverse);
+}
+
+void ClimberSubsystem::SetLatchSolenoidForward() {
+	latchSolenoid->Set(DoubleSolenoid::kForward);
+}
+
+void ClimberSubsystem::SetLatchSolenoidReverse() {
+	latchSolenoid->Set(DoubleSolenoid::kReverse);
 }
 
 bool ClimberSubsystem::GetForwardLimitSwitch() {

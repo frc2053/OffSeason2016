@@ -7,17 +7,20 @@
 class ClimberSubsystem: public Subsystem
 {
 private:
-	//std::shared_ptr<CANTalon> climbTalonLeft;
+	std::shared_ptr<CANTalon> climbTalonLeft;
 	std::shared_ptr<CANTalon> climbTalonRight;
 	std::shared_ptr<DoubleSolenoid> climbSolenoid;
+	std::shared_ptr<DoubleSolenoid> latchSolenoid;
 public:
 	ClimberSubsystem();
 	void InitDefaultCommand();
 	void RunBothMotors(float speed);
-	//void RunLeftMotor(float speed);
+	void RunLeftMotor(float speed);
 	void RunRightMotor(float speed);
-	void SetSolenoidForward();
-	void SetSolenoidReverse();
+	void SetClimbSolenoidForward();
+	void SetClimbSolenoidReverse();
+	void SetLatchSolenoidForward();
+	void SetLatchSolenoidReverse();
 	bool GetForwardLimitSwitch();
 	bool GetReverseLimitSwitch();
 };
